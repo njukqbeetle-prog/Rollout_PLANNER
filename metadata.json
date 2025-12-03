@@ -1,0 +1,5 @@
+{
+  "name": "QMS Rollout Planner",
+  "description": "A dynamic rollout plan generator for QMS, CX & Self Service System installations.",
+  "requestFramePermissions": []
+}
