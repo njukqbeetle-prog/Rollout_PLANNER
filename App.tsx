@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useMemo } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -10,6 +11,7 @@ import { DEFAULT_CONFIG, DEFAULT_LOGO } from './constants';
 export default function App() {
   const [numBranches, setNumBranches] = useState<number>(DEFAULT_CONFIG.numBranches);
   const [companyName, setCompanyName] = useState<string>(DEFAULT_CONFIG.companyName);
+  const [clientName, setClientName] = useState<string>(DEFAULT_CONFIG.clientName || '');
   const [projectName, setProjectName] = useState<string>(DEFAULT_CONFIG.projectName);
   const [dateRanges, setDateRanges] = useState<Record<number, string>>({});
   const [logo, setLogo] = useState<string>(DEFAULT_LOGO);
@@ -92,7 +94,7 @@ export default function App() {
         heightLeft -= pdfHeight;
       }
       
-      pdf.save(`${companyName.replace(/[^a-z0-9]/gi, '_')}_Rollout_Plan.pdf`);
+      pdf.save(`${(clientName || companyName).replace(/[^a-z0-9]/gi, '_')}_Rollout_Plan.pdf`);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please use the Print option as an alternative.');
@@ -169,6 +171,8 @@ export default function App() {
                 setNumBranches={setNumBranches}
                 companyName={companyName}
                 setCompanyName={setCompanyName}
+                clientName={clientName}
+                setClientName={setClientName}
                 projectName={projectName}
                 setProjectName={setProjectName}
                 onLogoUpload={handleLogoUpload}
@@ -182,7 +186,8 @@ export default function App() {
         <div className="overflow-auto pb-10">
             <RolloutPlan 
                 ref={printRef}
-                companyName={companyName} 
+                companyName={companyName}
+                clientName={clientName} 
                 projectName={projectName}
                 weeks={weeks} 
                 dateRanges={dateRanges}

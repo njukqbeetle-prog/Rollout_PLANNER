@@ -1,3 +1,4 @@
+
 export const COLORS = {
   PHYSICAL_1: '#F4B084', // Light Orange
   PHYSICAL_2: '#9BBB59', // Olive Green
@@ -15,6 +16,7 @@ export const DEFAULT_LOGO = "https://i.ibb.co/hK70R3x/1706692290076.jpg";
 
 export const DEFAULT_CONFIG = {
   companyName: 'RIANA GROUP',
-  projectName: 'QMS, CX & SELF SERVICE SYSTEM INSTALLATION ROLLOUT PLAN',
+  clientName: '',
+  projectName: 'QMS, CX & SELF SERVICE SYSTEM INSTALLATION',
   numBranches: 10,
 };

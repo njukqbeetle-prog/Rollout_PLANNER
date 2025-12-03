@@ -1,3 +1,4 @@
+
 import React, { forwardRef, useState, useMemo } from 'react';
 import { WeekTable } from './WeekTable';
 import { WeekData } from '../types';
@@ -5,6 +6,7 @@ import { Activity, Share2, Globe, Search, X, Shield } from 'lucide-react';
 
 interface RolloutPlanProps {
   companyName: string;
+  clientName: string;
   projectName: string;
   weeks: WeekData[];
   dateRanges: Record<number, string>;
@@ -14,7 +16,8 @@ interface RolloutPlanProps {
 }
 
 export const RolloutPlan = forwardRef<HTMLDivElement, RolloutPlanProps>(({ 
-  companyName, 
+  companyName,
+  clientName, 
   projectName, 
   weeks,
   dateRanges,
@@ -69,8 +72,8 @@ export const RolloutPlan = forwardRef<HTMLDivElement, RolloutPlanProps>(({
       </div>
 
       {/* Header Section */}
-      <div className="flex flex-col items-center mb-8">
-        <div className="mb-6 flex flex-col items-center gap-2">
+      <div className="flex flex-col items-center mb-10">
+        <div className="mb-8 flex flex-col items-center gap-2">
           {/* Dynamic Company Logo */}
           <img 
             src={logo} 
@@ -88,11 +91,18 @@ export const RolloutPlan = forwardRef<HTMLDivElement, RolloutPlanProps>(({
         </div>
 
         {/* Document Title - Strictly matching PDF Format */}
-        <div className="text-center space-y-2 uppercase text-slate-900">
-            <h1 className="text-2xl md:text-3xl font-normal tracking-wide">
+        <div className="text-center space-y-3 uppercase text-slate-900 w-full">
+            {/* Optional Client Name */}
+            {clientName && (
+               <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
+                   {clientName}
+               </h1>
+            )}
+
+            <h1 className="text-xl md:text-2xl font-normal tracking-wide">
                 {projectName}
             </h1>
-            <h2 className="text-xl md:text-2xl font-normal tracking-widest">
+            <h2 className="text-lg md:text-xl font-normal tracking-widest border-b-2 border-transparent inline-block">
                 ROLLOUT PLAN
             </h2>
         </div>

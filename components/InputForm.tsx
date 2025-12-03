@@ -1,12 +1,14 @@
+
 import React, { useRef } from 'react';
-import { Settings, Users, Building, FileText, Image as ImageIcon, Upload, RotateCcw } from 'lucide-react';
-import { DEFAULT_LOGO } from '../constants';
+import { Settings, Users, Building, FileText, Image as ImageIcon, Upload, RotateCcw, Briefcase } from 'lucide-react';
 
 interface InputFormProps {
   numBranches: number;
   setNumBranches: (n: number) => void;
   companyName: string;
   setCompanyName: (s: string) => void;
+  clientName: string;
+  setClientName: (s: string) => void;
   projectName: string;
   setProjectName: (s: string) => void;
   onLogoUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -20,6 +22,8 @@ export const InputForm: React.FC<InputFormProps> = ({
   setNumBranches,
   companyName,
   setCompanyName,
+  clientName,
+  setClientName,
   projectName,
   setProjectName,
   onLogoUpload,
@@ -41,7 +45,7 @@ export const InputForm: React.FC<InputFormProps> = ({
         <div>
           <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
             <Building className="w-4 h-4" />
-            Company Name
+            Vendor Name (Top Logo Text)
           </label>
           <div className="space-y-2">
             <input
@@ -64,6 +68,21 @@ export const InputForm: React.FC<InputFormProps> = ({
                 </label>
             </div>
           </div>
+        </div>
+
+        {/* Client Name */}
+        <div>
+          <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+            <Briefcase className="w-4 h-4" />
+            Client Name
+          </label>
+          <input
+            type="text"
+            value={clientName}
+            onChange={(e) => setClientName(e.target.value)}
+            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all"
+            placeholder="e.g. COOPERATIVE BANK"
+          />
         </div>
 
         {/* Project Name */}

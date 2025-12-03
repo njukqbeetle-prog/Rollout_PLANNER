@@ -1,3 +1,4 @@
+
 export interface CellStyle {
   backgroundColor: string;
   colSpan?: number;
@@ -24,6 +25,7 @@ export interface WeekData {
 export interface RolloutConfig {
   companyName: string;
   projectName: string;
+  clientName: string;
   numBranches: number;
   startDate: string;
 }
